@@ -14,7 +14,6 @@ For a random variable X, obtain n random samples of X.
 Let's call X[n] a "sample vector" of X.
 (e.g. `rnorm(100)` is a sample vector of N(0,1) (of length 100)
 
-
 "Random samples" are also known as "deviates"
 
 https://www.amazon.com/Million-Random-Digits-Normal-Deviates/dp/0833030477
@@ -50,16 +49,10 @@ Jutstification: Locality.
 GFC was arguably caused by a false presumption of independence (low correlation)
 https://www.businessinsider.com.au/bubble-derivatives-otc-2010-5
 
-
-
 ## The Statistician/Manager Axis
-
 
    Raw Data - Distribution - Interval - Average - Category
 <- Statistician   -----------------------          Executive ->
-
-
-
 
 # Stan/Code
 ## Generated Quantities
@@ -88,8 +81,18 @@ Advantages:
 
 
 ## Tidybayes
-Old and broken
+An R package `tidybayes` exists to solve this
+https://github.com/mjskay/tidybayes
 
+
+Example taken from  
+https://github.com/stan-dev/stancon_talks/tree/master/2017/Contributed-Talks/01_auerbach
+
+
+Old and broken
+```{r load fitted model}
+load(file = "fit.rds")
+```
 ```{r old_postprocessing}
 wthn <- c("COND_e","CITY_e","YEAR_e","SLIM_e",
           "SIGN_e","LGHT_e","BLTE_e","TFFC_e")
@@ -117,7 +120,7 @@ coef_ggplot
 
 New Hotness
 
-```{r}
+```{r new_postprocessing}
 library(tidybayes)
 library(tidyverse)
 coef_ggplot_new <- fit %>% 
